@@ -782,5 +782,16 @@ require('lazy').setup({
   },
 })
 
+vim.filetype.add {
+  pattern = {
+    ['.*/tasks/.*.yaml'] = 'yaml.ansible',
+    ['.*/tasks/.*.yml'] = 'yaml.ansible',
+    ['.*/handlers/.*.yaml'] = 'yaml.ansible',
+    ['.*/handlers/.*.yml'] = 'yaml.ansible',
+    ['.*/group_vars/.*.yaml'] = 'yaml.ansible',
+    ['.*/group_vars/.*.yml'] = 'yaml.ansible',
+  },
+}
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
