@@ -735,6 +735,29 @@ require('lazy').setup({
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   -- { import = 'custom.plugins' },
 
+  {
+    'gennaro-tedesco/nvim-possession',
+    dependencies = {
+      'ibhagwan/fzf-lua',
+    },
+    config = true,
+    init = function()
+      local possession = require 'nvim-possession'
+      vim.keymap.set('n', '<leader>sl', function()
+        possession.list()
+      end)
+      vim.keymap.set('n', '<leader>sN', function()
+        possession.new()
+      end)
+      vim.keymap.set('n', '<leader>su', function()
+        possession.update()
+      end)
+      vim.keymap.set('n', '<leader>sd', function()
+        possession.delete()
+      end)
+    end,
+  },
+
   { 'neoclide/coc.nvim', event = 'VimEnter' },
   { 'yaegassy/coc-ansible', event = 'VimEnter' },
 }, {
