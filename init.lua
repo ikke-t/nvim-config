@@ -766,8 +766,8 @@ require('lazy').setup({
     end,
   },
 
-  { 'neoclide/coc.nvim', event = 'VimEnter' },
-  { 'yaegassy/coc-ansible', event = 'VimEnter' },
+  -- { 'neoclide/coc.nvim', event = 'VimEnter' },
+  -- { 'yaegassy/coc-ansible', event = 'VimEnter' },
   { 'mfussenegger/nvim-ansible', event = 'VimEnter' },
   { 'nvim-tree/nvim-tree.lua', event = 'VimEnter' },
   { 'nvim-tree/nvim-web-devicons', event = 'VimEnter' },
