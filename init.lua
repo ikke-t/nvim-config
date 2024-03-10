@@ -4,6 +4,12 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
@@ -761,6 +767,8 @@ require('lazy').setup({
   { 'neoclide/coc.nvim', event = 'VimEnter' },
   { 'yaegassy/coc-ansible', event = 'VimEnter' },
   { 'mfussenegger/nvim-ansible', event = 'VimEnter' },
+  { 'nvim-tree/nvim-tree.lua', event = 'VimEnter' },
+  { 'nvim-tree/nvim-web-devicons', event = 'VimEnter' },
 }, {
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the
@@ -782,6 +790,11 @@ require('lazy').setup({
     },
   },
 })
+
+-- empty setup using defaults
+require('nvim-tree').setup {
+  vim.keymap.set('n', '<leader>t', require('nvim-tree.api').tree.toggle, { desc = '[T]oggle NvimTree' }),
+}
 
 --
 -- vim.filetype.add {
