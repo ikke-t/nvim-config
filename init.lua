@@ -446,6 +446,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        ansiblels = {},
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
@@ -733,6 +734,9 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   -- { import = 'custom.plugins' },
+
+  { 'neoclide/coc.nvim', event = 'VimEnter' },
+  { 'yaegassy/coc-ansible', event = 'VimEnter' },
 }, {
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the
