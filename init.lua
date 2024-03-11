@@ -172,6 +172,10 @@ require('lazy').setup({
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+      vim.keymap.set('n', '<leader>gv', ':Gitsigns preview_hunk<CR>', { desc = '[G]itsign pre[V]iew hunk' }),
+      vim.keymap.set('n', '<leader>gp', ':Gitsigns prev_hunk<CR>', { desc = '[G]itsign [P]revious hunk' }),
+      vim.keymap.set('n', '<leader>gn', ':Gitsigns next_hunk<CR>', { desc = '[G]itsign [N]ext hunk' }),
+      vim.keymap.set('n', '<leader>gt', ':Gitsigns toggle_current_line_blame<CR>', { desc = '[G]itsign [T]oggle blame' }),
     },
   },
 
