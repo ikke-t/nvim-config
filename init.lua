@@ -748,36 +748,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
-
-  {
-    'gennaro-tedesco/nvim-possession',
-    dependencies = {
-      'ibhagwan/fzf-lua',
-    },
-    config = true,
-    init = function()
-      local possession = require 'nvim-possession'
-      vim.keymap.set('n', '<leader>sl', function()
-        possession.list()
-      end)
-      vim.keymap.set('n', '<leader>sN', function()
-        possession.new()
-      end)
-      vim.keymap.set('n', '<leader>su', function()
-        possession.update()
-      end)
-      vim.keymap.set('n', '<leader>sd', function()
-        possession.delete()
-      end)
-    end,
-  },
-
-  -- { 'neoclide/coc.nvim', event = 'VimEnter' },
-  -- { 'yaegassy/coc-ansible', event = 'VimEnter' },
-  { 'mfussenegger/nvim-ansible', event = 'VimEnter' },
-  { 'nvim-tree/nvim-tree.lua', event = 'VimEnter' },
-  { 'nvim-tree/nvim-web-devicons', event = 'VimEnter' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the
@@ -799,11 +770,6 @@ require('lazy').setup({
     },
   },
 })
-
--- empty setup using defaults
-require('nvim-tree').setup {
-  vim.keymap.set('n', '<leader>t', require('nvim-tree.api').tree.toggle, { desc = '[T]oggle NvimTree' }),
-}
 
 --
 -- vim.filetype.add {
