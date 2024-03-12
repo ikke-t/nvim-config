@@ -1,4 +1,34 @@
 return {
+  {
+    'goolord/alpha-nvim',
+    config = function()
+      local alpha = require 'alpha'
+      local dashboard = require 'alpha.themes.startify'
+      require('alpha').setup(require('alpha.themes.startify').config)
+      dashboard.section.header.val = {
+        [[                                                                       ]],
+        [[                                                                       ]],
+        [[                                                                       ]],
+        [[                                                                       ]],
+        [[                                                                     ]],
+        [[       ████ ██████           █████      ██                     ]],
+        [[      ███████████             █████                             ]],
+        [[      █████████ ███████████████████ ███   ███████████   ]],
+        [[     █████████  ███    █████████████ █████ ██████████████   ]],
+        [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+        [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+        [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+        [[                                                                       ]],
+        [[                                                                       ]],
+        [[                                                                       ]],
+      }
+
+      alpha.setup(dashboard.opts)
+    end,
+    dependencies = {
+      { 'nvim-tree/nvim-web-devicons' },
+    },
+  },
   { -- possessions allows save and restore nvim sessions
     'gennaro-tedesco/nvim-possession',
     dependencies = {
