@@ -58,14 +58,17 @@ return {
   { -- nvim-tree.lua adds the file browser
     'nvim-tree/nvim-tree.lua',
     event = 'VimEnter',
+    opts = {
+      system_open = { cmd = 'flatpak-xdg-open', args = {} },
+    },
+    dependencies = {
+      { 'nvim-tree/nvim-web-devicons' },
+    },
     config = function()
       require('nvim-tree').setup {
         vim.keymap.set('n', '<leader>t', require('nvim-tree.api').tree.toggle, { desc = '[T]oggle NvimTree' }),
       }
     end,
-    dependencies = {
-      { 'nvim-tree/nvim-web-devicons' },
-    },
   },
   { -- fugitive is the git tool
     'tpope/vim-fugitive',
