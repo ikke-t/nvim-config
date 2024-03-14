@@ -6,6 +6,7 @@ vim.g.maplocalleader = ' '
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.netrw_browsex_viewer = 'flatpak-xdg-open'
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
