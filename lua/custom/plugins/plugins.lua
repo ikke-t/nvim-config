@@ -64,11 +64,16 @@ return {
     dependencies = {
       { 'nvim-tree/nvim-web-devicons' },
     },
-    config = function()
-      require('nvim-tree').setup {
-        vim.keymap.set('n', '<leader>t', require('nvim-tree.api').tree.toggle, { desc = '[T]oggle NvimTree' }),
-      }
-    end,
+    keys = {
+      {
+        '<leader>t',
+        mode = { 'n' },
+        function()
+          require('nvim-tree.api').tree.toggle()
+        end,
+        desc = '[T]oggle NvimTree',
+      },
+    },
   },
   { -- fugitive is the git tool
     'tpope/vim-fugitive',
