@@ -73,6 +73,29 @@ return {
         end,
         desc = '[T]oggle NvimTree',
       },
+      {
+        -- as we don't have netew, we loose gx. Add it back:
+        -- https://www.reddit.com/r/neovim/comments/11zgf64/gxnvim_open_links_and_more_without_netrw/
+        -- will change in nvim 0.10.0 to vim.ui.open
+        'gx',
+        mode = { 'n' },
+        function()
+          local cmd
+          local url = vim.fn.expand '<cfile>'
+          local is_container = vim.fn.filereadable '/run/.containerenv'
+          if is_container then
+            cmd = 'flatpak-xdg-open'
+          else
+            cmd = 'xdg-open '
+          end
+          if string.match(url, 'https') == 'https' or string.match(url, 'http') == 'http' then
+            vim.fn.system { cmd, url }
+          else
+            return print '💁 Woops no url under cursor 🙅'
+          end
+        end,
+        desc = '[X]dg Open current url',
+      },
     },
   },
   { -- fugitive is the git tool
