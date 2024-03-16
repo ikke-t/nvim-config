@@ -4,9 +4,32 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- disabling netrw due nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.netrw_browsex_viewer = 'flatpak-xdg-open'
+-- as we don't have netew, we loose gx. Add it back:
+-- https://www.reddit.com/r/neovim/comments/11zgf64/gxnvim_open_links_and_more_without_netrw/
+local openUrl = function()
+  return function()
+    local url = vim.fn.expand '<cWORD>'
+    local result
+    local in_container = vim.fn.filereadable '/run/.containerenv'
+    if in_container then
+      -- open(macos) || xdg-open(linux)
+      result = ':!flatpak-xdg-open ' .. url
+    else
+      result = ':!xdg-open ' .. url
+    end
+    if string.match(url, 'https') == 'https' or string.match(url, 'http') == 'http' then
+      vim.cmd(result)
+    else
+      return print '💁 Woops is not url 🙅'
+    end
+  end
+end
+local open = openUrl()
+vim.keymap.set('n', 'gx', open, { desc = '[X]dg open URL' })
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
