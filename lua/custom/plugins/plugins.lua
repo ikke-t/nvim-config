@@ -79,20 +79,11 @@ return {
         -- will change in nvim 0.10.0 to vim.ui.open
         'gx',
         mode = { 'n' },
+        -- function()
+        --   vim.ui.open(vim.fn.expand '<cfile>')
+        -- end,
         function()
-          local cmd
-          local url = vim.fn.expand '<cfile>'
-          local is_container = vim.fn.filereadable '/run/.containerenv'
-          if is_container then
-            cmd = 'flatpak-xdg-open'
-          else
-            cmd = 'xdg-open '
-          end
-          if string.match(url, 'https') == 'https' or string.match(url, 'http') == 'http' then
-            vim.fn.system { cmd, url }
-          else
-            return print '💁 Woops no url under cursor 🙅'
-          end
+          vim.fn.system { 'xdg-open', vim.fn.expand '<cfile>' }
         end,
         desc = '[X]dg Open current url',
       },
